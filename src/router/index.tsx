@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Private from "@/components/config/Private";
 import NotFound from "@/pages/notfound";
 import { FC, lazy } from "react";
@@ -36,21 +35,15 @@ export const menuRoutes = [
 const routes = createBrowserRouter([
   {
     path: "/login",
-    // @ts-ignore
-    name: "Login",
-    hideInMenu: true,
     element: <Login />,
   },
   {
     path: "/",
-    name: "Home",
     element: <Private children={<Home />} />,
     children: menuRoutes,
   },
   {
     path: "*",
-    name: "NotFound",
-    hideInMenu: true,
     element: <NotFound />,
   },
 ]);
