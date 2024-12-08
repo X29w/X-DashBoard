@@ -1,15 +1,18 @@
-import { menuRoutes } from "@/router";
+import { menuRoutes } from "@/router/menuRoutes";
 import {
   GithubFilled,
   InfoCircleFilled,
+  LogoutOutlined,
   QuestionCircleFilled,
 } from "@ant-design/icons";
-import { PageContainer, ProCard, ProLayout } from "@ant-design/pro-components";
+import { ProLayout } from "@ant-design/pro-components";
+import { Dropdown } from "antd";
 import { FC, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 const Home: FC<unknown> = () => {
-  const [pathname, setPathname] = useState("/list/sub-page/sub-sub-page1");
+  const location = useLocation();
+  const [pathname, setPathname] = useState(location.pathname);
 
   return (
     <ProLayout
@@ -23,15 +26,31 @@ const Home: FC<unknown> = () => {
         src: "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
         title: "七妮妮",
         size: "small",
+        render: (_, dom) => {
+          return (
+            <Dropdown
+              menu={{
+                items: [
+                  {
+                    key: "logout",
+                    icon: <LogoutOutlined />,
+                    label: "退出登录",
+                  },
+                ],
+              }}
+            >
+              {dom}
+            </Dropdown>
+          );
+        },
       }}
-      actionsRender={(props) => {
-        if (props.isMobile) return [];
-        return [
-          <InfoCircleFilled key="InfoCircleFilled" />,
-          <QuestionCircleFilled key="QuestionCircleFilled" />,
-          <GithubFilled key="GithubFilled" />,
-        ];
-      }}
+      actionsRender={() => [
+        <InfoCircleFilled key="InfoCircleFilled" />,
+        <QuestionCircleFilled key="QuestionCircleFilled" />,
+        <GithubFilled key="GithubFilled" />,
+      ]}
+      fixSiderbar={true}
+      layout={"mix"}
       menuItemRender={(item, dom) => (
         <Link
           to={item.path ?? "/"}
@@ -40,12 +59,14 @@ const Home: FC<unknown> = () => {
           {dom}
         </Link>
       )}
+      menuFooterRender={() => (
+        <div className="text-center p-4">
+          <div>© 2021 Made with love</div>
+          <div>by X Design</div>
+        </div>
+      )}
     >
-      <PageContainer>
-        <ProCard className="h-screen w-full">
-          <Outlet />
-        </ProCard>
-      </PageContainer>
+      <Outlet />
     </ProLayout>
   );
 };
