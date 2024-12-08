@@ -1,14 +1,6 @@
 import type { FC } from "react";
-import { Button } from "antd";
+import RoutesConfig from "./router";
 
-interface AppProps {}
-
-const App: FC<AppProps> = () => {
-  return (
-    <div>
-      <Button>123</Button>
-    </div>
-  );
-};
+const App: FC<unknown> = () => <RoutesConfig />;
 
 export default App;
