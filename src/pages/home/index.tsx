@@ -1,4 +1,4 @@
-import { menuRoutes } from "@/router/menuRoutes";
+import { menuRoutes } from "@/lib/router/menuRoutes";
 import {
   GithubFilled,
   InfoCircleFilled,

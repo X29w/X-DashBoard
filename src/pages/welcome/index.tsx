@@ -1,4 +1,4 @@
-import { increment, selectCounter } from "@/store/slices/counterSlice";
+import { increment, selectCounter } from "@/lib/store/slices/counterSlice";
 import { Button } from "antd";
 import type { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";

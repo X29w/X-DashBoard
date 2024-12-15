@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import RoutesConfig from "./router";
+import RoutesConfig from "./lib/router";
 import ProviderConfig from "./components/config/ProviderConfig";
 
 const App: FC<unknown> = () => (
