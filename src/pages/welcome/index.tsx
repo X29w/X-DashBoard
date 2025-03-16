@@ -10,7 +10,10 @@ const Welcome: FC<WelcomeProps> = () => {
   const dispatch = useDispatch();
   return (
     <>
-      Welcome to X-DashBoard!
+      <div className="hidden">
+        Welcome to X-DashBoard!
+        {AXIOS_BASE_URL}
+      </div>
       <div>
         <Button onClick={() => dispatch(increment())}>{count}</Button>
       </div>
