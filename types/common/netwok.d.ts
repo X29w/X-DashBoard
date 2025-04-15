@@ -1,4 +1,4 @@
-declare module MNetWord {
+declare module MNetWork {
   export interface ReqRes<T> {
     code: number;
     data: T;
@@ -10,5 +10,13 @@ declare module MNetWord {
     method?: "POST" | "GET"; 
     data?: K;
     config?: D;
+  }
+
+
+  export interface Response<T>{
+    data: T;
+    success: boolean;
+    message: string;
+    code: number;
   }
 }
